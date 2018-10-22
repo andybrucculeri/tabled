@@ -27,9 +27,9 @@ $(document).ready(function(){
     async: true,
     success: function(grantz){
       console.log(grantz);
-      html += '<h1 id="title"> Grants Awarded by NE for Humanities </h1>';
-      html += '<th> <td>Title</td> <td> Year</td> <td> Amount</td> <td> Description</td> </tr>';
-
+      html += '<table>'
+      html += '<h1 id="title"> Grants Awarded by National Endowment for the Humanities since 2008 </h1>';
+      html += '<tr>' + '<th>Title</th>' + '<th> Year</th>' + '<th> Amount</th>' + '<th> Description</th>' + '</tr>';
       $(grantz).find('Grant').each(function(){
         title = $(this).find('ProjectTitle').text();
         year = $(this).find('YearAwarded').text();
@@ -46,12 +46,13 @@ $(document).ready(function(){
             html += '<tr>';
             html +=   '<td>' + title + '</td>';
             html +=   '<td>' + year + '</td>';
-            html +=   '<td>' + amount + '</td>';
+            html +=   '<td> $' + amount + '</td>';
             html +=   '<td>' + description + '</td>';
             html += '</tr>';
+            console.log('woot');
           }
       });
-
+html += '</table>'
       $('#results').append(html);
 
     }
